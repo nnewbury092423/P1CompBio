@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/kVjIno-a)
 # ECE 208 Homework 1: Warm-Up
 In this homework assignment, you will be doing some basic warm-up for this course. This assignment includes programming as well as theoretical components to ensure you are comfortable with both sides of the prerequisites of this course. As with all homework assignments in this class, be sure to follow the instructions carefully to ensure that you receive full credit. All coding for this assignment must be done in **Python 3**.
 
