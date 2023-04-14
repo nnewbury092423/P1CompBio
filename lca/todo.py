@@ -9,15 +9,22 @@ def find_LCAs(parent):
         :param v: node v
         :return: A set containing the LCAs of u and v
         '''
+
+
         #print(type(u)) string
-        #print(type(v)) string
-        testset = set()
+        
+        # create ancestor set
+        ancestor = set()
+        
+        # create dictionary
         if not u in LCA:
             LCA[u] = {}
           
         if v not in LCA[u]:
             LCA[u][v] = set()
+        
             
+        # base cases    
         if u == v:
             LCA[u][v] = {u}
             return LCA[u][v]
@@ -30,37 +37,30 @@ def find_LCAs(parent):
             LCA[u][v] = {v}
             return LCA[u][v]
         
-
+        # recursive formula
         for pu in parent[u]:
-            #print(type(pu))
-            #print(type(v))
-            #print(LCA[pu][v])
+            print(pu)
+            print(type(v))
+            print(LCA[pu][v])
             if not LCA[pu][v] == set():
-                testset = testset|LCA[pu][v] 
+                ancestor = ancestor|LCA[pu][v] 
             
         for pv in parent[v]:
             if not LCA[u][pv] == set():
-                testset = testset|LCA[u][pv] 
+                ancestor = ancestor|LCA[u][pv] 
         
-        for n1 in testset:
-            for n2 in testset:
+         # remove the ancestors that are not LCA
+        for n1 in ancestor:
+            for n2 in ancestor:
                 if n1!=n2:
                     #print(LCA[n1][n2])
-                    testset = testset - LCA[n1][n2]
+                    ancestor = ancestor - LCA[n1][n2]
 
 
-        #if len(testset) > 1:
-         #   for elem in testset:
-        #subtract = set()
-        #for a in testset:
-         #   for b in testset:
-         #       if a != b and LCA[a][b] != set():
-          #          subtract = subtract | LCA[a][b]
-        #print( u + v)      
+      
         
-        # need optimal test set
-        LCA[u][v] = testset
-       # LCA[u][v] -= subtract 
+        # save ancestor, which is now LCA into our LCA dictionary
+        LCA[u][v] = ancestor
         return LCA[u][v] # TODO replace this with your code
 
 
