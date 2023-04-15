@@ -10,7 +10,6 @@ def find_LCAs(parent):
         :return: A set containing the LCAs of u and v
         '''
 
-
         #print(type(u)) string
         
         # create ancestor set
@@ -37,26 +36,44 @@ def find_LCAs(parent):
             LCA[u][v] = {v}
             return LCA[u][v]
         
+       
+
         # recursive formula
         for pu in parent[u]:
             #print(type(pu))
             #print(type(v))
             #print(LCA[pu][v])
-            if not LCA[pu][v] == set():
-                ancestor = ancestor|LCA[pu][v] 
+            try:
+                if not LCA[pu][v] == set():
+                    ancestor = ancestor|LCA[pu][v] 
+            except:
+                 LCA[pu] = {}
+                 LCA[pu][v] = {}
+                 #print(v)
+                 return LCA[pu][v]
             
+               # recursive formula
         for pv in parent[v]:
-            if not LCA[u][pv] == set():
-                ancestor = ancestor|LCA[u][pv] 
+            #print(type(pu))
+            #print(type(v)) 
+            #print(LCA[pu][v])
+            try:
+                if not LCA[u][pv] == set():
+                    ancestor = ancestor|LCA[u][pv] 
+            except:
+                 LCA[u][pv] = {}
+                 #print(pv)
+                 return LCA[u][pv]
         
          # remove the ancestors that are not LCA
         for n1 in ancestor:
             for n2 in ancestor:
                 if n1!=n2:
                     #print(LCA[n1][n2])
-                    ancestor = ancestor - LCA[n1][n2]
-
-
+                    try:
+                        ancestor = ancestor - LCA[n1][n2]
+                    except:
+                        pass
       
         
         # save ancestor, which is now LCA into our LCA dictionary
