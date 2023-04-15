@@ -25,7 +25,7 @@ def find_LCAs(parent):
         
             
         # base cases    
-        if u == v:
+        if u == v:  
             LCA[u][v] = {u}
             return LCA[u][v]
         
@@ -39,9 +39,9 @@ def find_LCAs(parent):
         
         # recursive formula
         for pu in parent[u]:
-            print(pu)
-            print(type(v))
-            print(LCA[pu][v])
+            #print(type(pu))
+            #print(type(v))
+            #print(LCA[pu][v])
             if not LCA[pu][v] == set():
                 ancestor = ancestor|LCA[pu][v] 
             
